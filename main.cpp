@@ -297,6 +297,11 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 //------------------------------------------------------------------------
 // The constructor of the main frame that creates the menu stuffs and the 2 panels
 {
+// create the panel that will contain the controls
+	m_controlPanel = new MyControlPanel(this);
+// create the panel that will display the graphics
+	m_drawingPanel = new MyDrawingPanel(this);
+
 	wxMenu *fileMenu = new wxMenu();
 	fileMenu->Append(ID_LOAD, wxT("&Open file..."));
 	fileMenu->Append(ID_SAVE, wxT("&Save file..."));
@@ -316,10 +321,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 
 	SetMenuBar( menuBar );
 
-// create the panel that will contain the controls
-	m_controlPanel = new MyControlPanel(this);
-// create the panel that will display the graphics
-	m_drawingPanel = new MyDrawingPanel(this);
+
 	CreateStatusBar() ;
 	SetStatusText(wxT("click in the right panel and tune the controls of the left panel. Visit the File menu!")) ;
 	Centre() ; // Guess what it does ;-)
