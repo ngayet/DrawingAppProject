@@ -1,8 +1,5 @@
-#include "main.hpp"
 #include "MyDrawingPanel.hpp"
-#include "MyFrame.hpp"
-
-
+#include "Constants.hpp"
 //------------------------------------------------------------------------
 MyDrawingPanel::MyDrawingPanel(wxWindow* parent) : wxPanel(parent)
 //------------------------------------------------------------------------
@@ -47,24 +44,23 @@ void MyDrawingPanel::OnPaint(wxPaintEvent& event)
 // when the panel is resized
 // You have to call OnPaint with Refresh() when you need to update the panel content
 {
-	// read the control values
-	MyFrame* frame = (MyFrame*)GetParent();
-	int radius = frame->GetControlPanel()->GetSliderValue();
-	bool check = frame->GetControlPanel()->GetCheckBoxValue();
+	//// read the control values
+	//MyFrame* frame = (MyFrame*)GetParent();
+	//int radius = frame->GetControlPanel()->GetSliderValue();
+	//bool check = frame->GetControlPanel()->GetCheckBoxValue();
+	//// then paint
+	//wxPaintDC dc(this);
 
-	// then paint
-	wxPaintDC dc(this);
+	//dc.DrawLine(m_mousePoint, m_onePoint);
+	//dc.DrawRectangle(wxPoint(m_onePoint.x - radius / 2, m_onePoint.y - radius / 2), wxSize(radius, radius));
+	//dc.DrawCircle(wxPoint(m_mousePoint), radius / 2);
 
-	dc.DrawLine(m_mousePoint, m_onePoint);
-	dc.DrawRectangle(wxPoint(m_onePoint.x - radius / 2, m_onePoint.y - radius / 2), wxSize(radius, radius));
-	dc.DrawCircle(wxPoint(m_mousePoint), radius / 2);
-
-	if (check)
-	{
-		wxString coordinates;
-		coordinates.sprintf(wxT("(%d,%d)"), m_mousePoint.x, m_mousePoint.y);
-		dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y + 20));
-	}
+	//if (check)
+	//{
+	//	wxString coordinates;
+	//	coordinates.sprintf(wxT("(%d,%d)"), m_mousePoint.x, m_mousePoint.y);
+	//	dc.DrawText(coordinates, wxPoint(m_mousePoint.x, m_mousePoint.y + 20));
+	//}
 }
 
 //------------------------------------------------------------------------

@@ -1,8 +1,5 @@
-#include "main.hpp"
 #include "MyFrame.hpp"
-#include "MyControlPanel.hpp"
-#include "MyDrawingPanel.hpp"
-
+#include "Constants.hpp"
 
 //************************************************************************
 //************************************************************************

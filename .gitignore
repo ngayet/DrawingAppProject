@@ -38,9 +38,9 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
-#*.sln
-#*.vcxproj
-#*.filters
+*.sln
+*.vcxproj
+*.filters
 
 # User-specific files
 *.rsuser

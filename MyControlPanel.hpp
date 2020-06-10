@@ -1,16 +1,8 @@
-// For compilers that support precompilation, includes "wx/wx.h".
+#ifndef __MyControlPanel_h__
+#define __MyControlPanel_h__
+
 #include "wx/wxprec.h"
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-#include<wx/filedlg.h>
-#include <wx/image.h>
-#include <wx/file.h>
-#include <wx/bitmap.h>
-
-//------------------------------------------------------------------------
 class MyControlPanel : public wxPanel
 	//------------------------------------------------------------------------
 {
@@ -28,3 +20,4 @@ private:
 	wxCheckBox* m_checkBox;
 };
 
+#endif

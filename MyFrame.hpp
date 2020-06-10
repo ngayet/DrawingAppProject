@@ -1,14 +1,12 @@
-// For compilers that support precompilation, includes "wx/wx.h".
+#ifndef __MyFrame_h__
+#define __MyFrame_h__
+
 #include "wx/wxprec.h"
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
+#include "MyDrawingPanel.hpp"
+#include "MyControlPanel.hpp"
 
-#include<wx/filedlg.h>
-#include <wx/image.h>
-#include <wx/file.h>
-#include <wx/bitmap.h>
+
 
 //------------------------------------------------------------------------
 class MyFrame : public wxFrame
@@ -30,3 +28,5 @@ protected:
 	MyControlPanel* m_controlPanel; // the panel with controls
 	MyDrawingPanel* m_drawingPanel; // the panel in which we draw
 };
+
+#endif

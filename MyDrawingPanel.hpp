@@ -1,18 +1,10 @@
-// For compilers that support precompilation, includes "wx/wx.h".
+#ifndef __MyDrawingPanel_h__
+#define __MyDrawingPanel_h__
+
 #include "wx/wxprec.h"
 
-#ifndef WX_PRECOMP
-#include "wx/wx.h"
-#endif
-
-#include<wx/filedlg.h>
-#include <wx/image.h>
-#include <wx/file.h>
-#include <wx/bitmap.h>
-
-
 class MyDrawingPanel : public wxPanel
-	//------------------------------------------------------------------------
+//------------------------------------------------------------------------
 {
 public:
 	MyDrawingPanel(wxWindow* parent);
@@ -26,3 +18,4 @@ private:
 	wxPoint m_mousePoint;
 	wxPoint m_onePoint;
 };
+#endif
