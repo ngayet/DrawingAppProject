@@ -1,6 +1,7 @@
 #include "MyControlPanel.hpp"
 #include "Constants.hpp"
 #include "Message.hpp"
+#include "Element.hpp"
 
 MyControlPanel::MyControlPanel(wxWindow* parent) : wxPanel(parent)
 //------------------------------------------------------------------------
@@ -57,8 +58,10 @@ void MyControlPanel::OnButtonLine(wxCommandEvent& event)
 {
 	Message msg = Message();
 
-	msg.type = TypesMessage::CONTROL_PANEL;
-	msg;
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
+	msg.m_type = DrawingType::LINE;
+
+	
 	//wxMessageBox(wxT("You just pressed the button!"));
 }
 
@@ -75,7 +78,7 @@ void MyControlPanel::OnColorPickerFillChanged(wxColourPickerEvent& event) {
 	//wxMessageBox(colour);
 	Message msg = Message();
 
-	msg.type = TypesMessage::CONTROL_PANEL;
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_fill = colour;
 }
 
