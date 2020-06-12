@@ -4,8 +4,9 @@
 #include "wx/wxprec.h"
 
 #include <wx/clrpicker.h>
+#include "Subject.hpp"
 
-class MyControlPanel : public wxPanel
+class MyControlPanel : public wxPanel, public Subject
 	//------------------------------------------------------------------------
 {
 public:

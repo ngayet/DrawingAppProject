@@ -12,7 +12,25 @@ Controller::Controller() {
     m_type = DrawingType::EMPTY;
 }
 
-void Controller::traiterMessage(Message msg) {
+Controller::Controller(MyFrame* mainFrame) {
+    m_id = "";
+    m_fill = "#FFFFFF";
+    m_stroke = "#000000";
+    m_strokeWidth = 0;
+    m_lock = false;
+    m_x = 0;
+    m_y = 0;
+    m_type = DrawingType::EMPTY;
+
+    m_controlPanel = new MyControlPanel(mainFrame);
+    m_drawingPanel = new MyDrawingPanel(mainFrame);
+
+    m_controlPanel->AddObserver(this);
+    m_drawingPanel->AddObserver(this);
+
+}
+
+void Controller::Update(Message msg) {
 
     switch (msg.m_msgType) {
     case TypesMessage::CONTROL_PANEL:

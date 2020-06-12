@@ -1,3 +1,6 @@
+#ifndef __Message_h__
+#define __Message_h__
+
 #include "TypesMessage.hpp"
 #include "Element.hpp"
 
@@ -18,7 +21,7 @@ public:
 };
 
 Message::Message() {
-	m_msgType = TypesMessage::EMPTY;
+	m_msgType = TypesMessage::EMPTY_MESSAGE;
 	m_id = "\n";
 	m_fill = "";
 	m_stroke = "";
@@ -28,3 +31,5 @@ Message::Message() {
 	m_y = 0;
 	m_type = DrawingType::EMPTY;
 }
+
+#endif

@@ -3,8 +3,9 @@
 
 #include "wx/wxprec.h"
 #include "Element.hpp"
+#include "Subject.hpp"
 
-class MyDrawingPanel : public wxPanel
+class MyDrawingPanel : public wxPanel, public Subject
 	//------------------------------------------------------------------------
 {
 public:

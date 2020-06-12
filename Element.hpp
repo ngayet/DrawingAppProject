@@ -1,6 +1,14 @@
-#pragma once
+#ifndef __Element_h__
+#define __Element_h__
+
 #include <string>
 #include "Node.hpp"
+
+enum DrawingType {
+	EMPTY,
+	LINE,
+	CIRCLE
+};
 
 class Element : public Node
 {
@@ -49,8 +57,6 @@ public:
 
 };
 
-enum DrawingType {
-	EMPTY,
-	LINE,
-	CIRCLE
-};
+
+
+#endif

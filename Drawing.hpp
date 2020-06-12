@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __Drawing_h__
+#define __Drawing_h__
 #include "Node.hpp"
 
 /**
@@ -14,3 +15,5 @@ public:
 	virtual ~Drawing() {}
 	Drawing& operator=(const Drawing& n) { (Node)*this = (Node)n; }
 };
+
+#endif

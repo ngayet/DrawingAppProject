@@ -28,6 +28,7 @@ Element::Element(DrawingType type)
 	m_type = type;
 }
 
+
 Element::~Element()
 {
 

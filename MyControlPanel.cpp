@@ -60,7 +60,7 @@ void MyControlPanel::OnButtonLine(wxCommandEvent& event)
 
 	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_type = DrawingType::LINE;
-
+	notifyObservers(msg);
 	
 	//wxMessageBox(wxT("You just pressed the button!"));
 }
@@ -73,7 +73,7 @@ void MyControlPanel::OnButtonCircle(wxCommandEvent& event)
 
 	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_type = DrawingType::CIRCLE;
-
+	notifyObservers(msg);
 	//wxMessageBox(wxT("You just pressed the button!"));
 }
 
@@ -85,6 +85,7 @@ void MyControlPanel::OnColorPickerFillChanged(wxColourPickerEvent& event) {
 
 	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_fill = colour;
+	notifyObservers(msg);
 }
 
 //------------------------------------------------------------------------
@@ -97,7 +98,7 @@ void MyControlPanel::OnColorPickerStrokeChanged(wxColourPickerEvent& event)
 
 	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_stroke = colour;
-
+	notifyObservers(msg);
 }
 
 //------------------------------------------------------------------------
@@ -110,6 +111,7 @@ void MyControlPanel::OnSliderStroke(wxScrollEvent& event)
 
 	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_strokeWidth = width;
+	notifyObservers(msg);
 }
 
 
@@ -124,6 +126,7 @@ void MyControlPanel::OnCheckBoxLock(wxCommandEvent& event)
 
 	msg.m_msgType = TypesMessage::CONTROL_PANEL;
 	msg.m_lock = lock;
+	notifyObservers(msg);
 	//MyFrame* frame = (MyFrame*)GetParent();
 	//frame->RefreshDrawing();	// update the drawing panel
 }

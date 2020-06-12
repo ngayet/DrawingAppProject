@@ -11,7 +11,6 @@ private:
 public:
 	void AddObserver(Observer* o) { m_observer = o; }
 	void notifyObservers(Message m) { if(m_observer) m_observer->Update(m);}
-	
 };
 
 #endif

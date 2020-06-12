@@ -1,10 +1,13 @@
+#ifndef __Controller_h__
+#define __Controller_h__
+
 #include "main.hpp"
 #include "string"
 #include "Element.hpp"
 
 #include "Message.hpp"
 
-class Controller
+class Controller : public Observer
 {
 private:
 	std::string m_id;
@@ -15,12 +18,13 @@ private:
 	int m_x;
 	int m_y;
 	DrawingType m_type;
+	MyControlPanel* m_controlPanel;
+	MyDrawingPanel* m_drawingPanel;
 
 public:
 	Controller();
-	void traiterMessage(Message msg);
+	Controller(MyFrame* mainFrame);
+	virtual void Update(Message msg);
 };
 
-
-
-
+#endif

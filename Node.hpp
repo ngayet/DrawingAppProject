@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __Node_h__
+#define __Node_h__
 #include <vector>
 
 /**
@@ -26,3 +27,5 @@ public:
 	bool RemoveChild(Node* child);
 	bool MoveTo(Node& dest, int level);
 };
+
+#endif
