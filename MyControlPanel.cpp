@@ -3,6 +3,7 @@
 #include "Message.hpp"
 #include "Element.hpp"
 
+
 MyControlPanel::MyControlPanel(wxWindow* parent) : wxPanel(parent)
 //------------------------------------------------------------------------
 // In this constructor, create the controls and associate each of them (bind) a method
@@ -43,13 +44,12 @@ MyControlPanel::MyControlPanel(wxWindow* parent) : wxPanel(parent)
 	m_sliderWidthStroke = new wxSlider(this, ID_SLIDER_STROKE, 10, 2, 100, wxPoint(10, y), wxSize(100, 20));
 	Bind(wxEVT_SCROLL_THUMBTRACK, &MyControlPanel::OnSliderStroke, this, ID_SLIDER_STROKE);
 
-
-
-
-	/*
+	//CheckBox Lock
 	y += WIDGET_Y_STEP;
-	m_checkBox = new wxCheckBox(this, ID_CHECKBOX1, "Show (x,y)", wxPoint(10, y), wxSize(100, 20));
-	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBox, this, ID_CHECKBOX1);*/
+	new wxStaticText(this, wxID_ANY, wxT("Lock"), wxPoint(10, y));
+	y += 15;
+	m_checkBoxLock = new wxCheckBox(this, ID_CHECKBOX_LOCK, "Show (x,y)", wxPoint(10, y), wxSize(100, 20));
+	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBoxLock, this, ID_CHECKBOX_LOCK);
 }
 
 //------------------------------------------------------------------------
@@ -69,6 +69,11 @@ void MyControlPanel::OnButtonLine(wxCommandEvent& event)
 void MyControlPanel::OnButtonCircle(wxCommandEvent& event)
 //------------------------------------------------------------------------
 {
+	Message msg = Message();
+
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
+	msg.m_type = DrawingType::CIRCLE;
+
 	//wxMessageBox(wxT("You just pressed the button!"));
 }
 
@@ -86,26 +91,40 @@ void MyControlPanel::OnColorPickerFillChanged(wxColourPickerEvent& event) {
 void MyControlPanel::OnColorPickerStrokeChanged(wxColourPickerEvent& event)
 //------------------------------------------------------------------------
 {
+	wxString colour = m_colorStroke->GetColour().GetAsString(wxC2S_HTML_SYNTAX).AfterFirst('#');
+
 	Message msg = Message();
 
-	msg.type = TypesMessage::CONTROL_PANEL;
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
+	msg.m_stroke = colour;
+
 }
 
 //------------------------------------------------------------------------
 void MyControlPanel::OnSliderStroke(wxScrollEvent& event)
 //------------------------------------------------------------------------
 {
-	//MyFrame* frame = (MyFrame*)GetParent();
-	//frame->RefreshDrawing();	// update the drawing panel
+	int width = m_sliderWidthStroke->GetValue();
+
+	Message msg = Message();
+
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
+	msg.m_strokeWidth = width;
 }
 
 
 
 //------------------------------------------------------------------------
-/*void MyControlPanel::OnCheckBox(wxCommandEvent& event)
+void MyControlPanel::OnCheckBoxLock(wxCommandEvent& event)
 //------------------------------------------------------------------------
 {
+	bool lock = m_checkBoxLock->GetValue();
+
+	Message msg = Message();
+
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
+	msg.m_lock = lock;
 	//MyFrame* frame = (MyFrame*)GetParent();
 	//frame->RefreshDrawing();	// update the drawing panel
-}*/
+}
 

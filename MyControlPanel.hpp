@@ -18,13 +18,14 @@ private:
 	void OnColorPickerFillChanged(wxColourPickerEvent& event);
 	void OnColorPickerStrokeChanged(wxColourPickerEvent& event);
 	void OnSliderStroke(wxScrollEvent& event);
+	void OnCheckBoxLock(wxCommandEvent& event);
 
 	wxButton* m_ButtonLine;
 	wxButton* m_ButtonCircle;
 	wxColourPickerCtrl* m_colorFill;
 	wxColourPickerCtrl* m_colorStroke;
 	wxSlider* m_sliderWidthStroke;
-	//wxCheckBox* m_checkBox;
+	wxCheckBox* m_checkBoxLock;
 };
 
 #endif
