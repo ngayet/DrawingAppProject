@@ -18,7 +18,7 @@ private:
 	void OnMouseMove(wxMouseEvent& event);
 	void OnMouseLeftDown(wxMouseEvent& event);
 	void OnPaint(wxPaintEvent& event);
-	void drawingThis(wxPaintDC* dc, Element* element);
+	void DrawingThis(wxPaintDC* dc, Element* element);
 	Element* m_currentElement;
 	std::vector<Element*>* m_elements;
 	bool m_isDrawing;

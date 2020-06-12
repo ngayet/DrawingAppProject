@@ -58,16 +58,16 @@ void MyDrawingPanel::OnPaint(wxPaintEvent& event)
 
 	dc.DrawLine(m_mousePoint, m_onePoint);
 	for (Element* element : *m_elements) {
-		drawingThis(&dc, element);
+		DrawingThis(&dc, element);
 	}
 
 	if (m_isDrawing)
 	{
-		drawingThis(&dc, m_currentElement);
+		DrawingThis(&dc, m_currentElement);
 	}
 }
 
-void MyDrawingPanel::drawingThis(wxPaintDC* dc, Element* element) {
+void MyDrawingPanel::DrawingThis(wxPaintDC* dc, Element* element) {
 
 	if (element->GetType() == DrawingType::LINE)
 		dc->DrawLine(wxPoint(element->GetX1(), element->GetY1()), wxPoint(element->GetX2(), element->GetY2()));
