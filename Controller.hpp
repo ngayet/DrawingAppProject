@@ -1,11 +1,13 @@
 #ifndef __Controller_h__
 #define __Controller_h__
 
-#include "main.hpp"
 #include "string"
 #include "Element.hpp"
-
 #include "Message.hpp"
+#include "MyFrame.hpp"
+#include "MyDrawingPanel.hpp"
+#include "MyControlPanel.hpp"
+
 
 class Controller : public Observer
 {
@@ -20,10 +22,11 @@ private:
 	DrawingType m_type;
 	MyControlPanel* m_controlPanel;
 	MyDrawingPanel* m_drawingPanel;
+	MyFrame* m_Frame;
 
 public:
 	Controller();
-	Controller(MyFrame* mainFrame);
+	Controller(MyFrame* myFrame);
 	virtual void Update(Message msg);
 };
 

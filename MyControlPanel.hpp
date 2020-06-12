@@ -2,7 +2,6 @@
 #define __MyControlPanel_h__
 
 #include "wx/wxprec.h"
-
 #include <wx/clrpicker.h>
 #include "Subject.hpp"
 

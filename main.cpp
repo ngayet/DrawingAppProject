@@ -24,25 +24,6 @@
 //************************************************************************
 //************************************************************************
 
-#include "wx/wxprec.h"
-#include "MyFrame.hpp"
-#include "Constants.hpp"
-
-//------------------------------------------------------------------------
-class MyApp: public wxApp
-//------------------------------------------------------------------------
-{
-    virtual bool OnInit() ;
-};
+#include "MyApp.hpp"
 
 IMPLEMENT_APP(MyApp) // macro that contains the main() function
-
-//------------------------------------------------------------------------
-bool MyApp::OnInit()
-//------------------------------------------------------------------------
-{
-	MyFrame *frame = new MyFrame(wxT(APP_NAME), wxDefaultPosition, wxSize(APPLICATION_WIDTH,APPLICATION_HEIGHT)) ;
-	frame->Show(true) ;
-	SetTopWindow(frame) ;
-	return true ;
-}

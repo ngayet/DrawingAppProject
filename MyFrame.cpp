@@ -1,6 +1,8 @@
 #include "MyFrame.hpp"
-#include "Constants.hpp"
 #include "Controller.hpp"
+
+
+
 
 //************************************************************************
 //************************************************************************
@@ -14,8 +16,7 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 	//------------------------------------------------------------------------
 	// The constructor of the main frame that creates the menu stuffs and the 2 panels
 {
-
-	Controller controller = Controller(this);
+	Controller* c = new Controller(this);
 
 	wxMenu* fileMenu = new wxMenu();
 	fileMenu->Append(ID_LOAD, wxT("&Open file..."));
@@ -91,6 +92,6 @@ void MyFrame::OnSize(wxSizeEvent& event)
 {
 	int w, h;
 	GetSize(&w, &h);
-	m_controlPanel->SetSize(wxRect(wxPoint(0, 0), wxPoint(WIDGET_PANEL_WIDTH, h)));
-	m_drawingPanel->SetSize(wxRect(wxPoint(WIDGET_PANEL_WIDTH, 0), wxPoint(w, h)));
+	//m_controlPanel->SetSize(wxRect(wxPoint(0, 0), wxPoint(WIDGET_PANEL_WIDTH, h)));
+	//m_drawingPanel->SetSize(wxRect(wxPoint(WIDGET_PANEL_WIDTH, 0), wxPoint(w, h)));
 }
