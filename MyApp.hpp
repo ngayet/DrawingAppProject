@@ -2,7 +2,7 @@
 
 #include "wx/wxprec.h"
 
-class MyApp
+class MyApp : public wxApp
 {
 	virtual bool OnInit();
 };

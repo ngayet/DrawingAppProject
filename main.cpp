@@ -26,4 +26,6 @@
 
 #include "MyApp.hpp"
 
-IMPLEMENT_APP(MyApp) // macro that contains the main() function
+IMPLEMENT_APP(MyApp)
+
+

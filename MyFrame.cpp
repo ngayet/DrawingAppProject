@@ -16,7 +16,6 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 	//------------------------------------------------------------------------
 	// The constructor of the main frame that creates the menu stuffs and the 2 panels
 {
-	Controller* c = new Controller(this);
 
 	wxMenu* fileMenu = new wxMenu();
 	fileMenu->Append(ID_LOAD, wxT("&Open file..."));
@@ -54,8 +53,8 @@ void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 void MyFrame::OnClose(wxCloseEvent& event)
 //------------------------------------------------------------------------
 {
-	delete m_controlPanel;
-	delete m_drawingPanel;
+	//delete m_controlPanel;
+	//delete m_drawingPanel;
 	event.Skip();
 }
 
@@ -71,18 +70,18 @@ void MyFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 void MyFrame::OnOpenFile(wxCommandEvent& WXUNUSED(event))
 //------------------------------------------------------------------------
 {
-	wxString filename = wxFileSelector(wxT("Select file"));
-	if (!filename.empty())
-		m_drawingPanel->OpenFile(filename);
+	//wxString filename = wxFileSelector(wxT("Select file"));
+	//if (!filename.empty())
+	//	m_drawingPanel->OpenFile(filename);
 }
 
 //------------------------------------------------------------------------
 void MyFrame::OnSaveFile(wxCommandEvent& WXUNUSED(event))
 //------------------------------------------------------------------------
 {
-	wxString filename = wxSaveFileSelector(wxT("Save file as"), wxT("*.txt"), wxT("data"));
-	if (!filename.empty())
-		m_drawingPanel->SaveFile(filename);
+	//wxString filename = wxSaveFileSelector(wxT("Save file as"), wxT("*.txt"), wxT("data"));
+	//if (!filename.empty())
+	//	m_drawingPanel->SaveFile(filename);
 }
 
 //------------------------------------------------------------------------

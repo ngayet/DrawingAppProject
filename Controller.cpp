@@ -11,28 +11,15 @@ Controller::Controller() {
 	m_x = 0;
 	m_y = 0;
 	m_type = DrawingType::EMPTY;
-}
-
-Controller::Controller(MyFrame* myFrame) {
-	m_id = "";
-	m_fill = "#FFFFFF";
-	m_stroke = "#000000";
-	m_strokeWidth = 0;
-	m_lock = false;
-	m_x = 0;
-	m_y = 0;
-	m_type = DrawingType::EMPTY;
 
 	MyFrame* frame = new MyFrame(wxT(APP_NAME), wxDefaultPosition, wxSize(APPLICATION_WIDTH, APPLICATION_HEIGHT));
-	
-	m_controlPanel = new MyControlPanel(myFrame);
-	m_drawingPanel = new MyDrawingPanel(myFrame);
+
+	m_controlPanel = new MyControlPanel(frame);
+	m_drawingPanel = new MyDrawingPanel(frame);
 	m_controlPanel->AddObserver(this);
 	m_drawingPanel->AddObserver(this);
-	frame->Show(true);
-	SetTopWindow(frame);
 
-	IMPLEMENT_APP(MyApp)
+	frame->Show(true);
 
 }
 

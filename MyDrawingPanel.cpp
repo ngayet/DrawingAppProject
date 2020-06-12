@@ -57,8 +57,10 @@ void MyDrawingPanel::OnPaint(wxPaintEvent& event)
 	wxPaintDC dc(this);
 
 	dc.DrawLine(m_mousePoint, m_onePoint);
-	for (Element* element : *m_elements) {
-		DrawingThis(&dc, element);
+	if (m_elements) {
+		for (Element* element : *m_elements) {
+			DrawingThis(&dc, element);
+		}
 	}
 
 	if (m_isDrawing)
