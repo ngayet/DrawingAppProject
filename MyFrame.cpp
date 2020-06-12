@@ -52,8 +52,9 @@ void MyFrame::OnClose(wxCloseEvent& event)
 
 	Message msg = Message();
 	msg.m_msgType = TypesMessage::MYFRAME_ON_CLOSE;
-	notifyObservers(msg);
+	notifyObservers(&msg);
 	event.Skip();
+
 }
 
 //------------------------------------------------------------------------

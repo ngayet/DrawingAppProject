@@ -5,7 +5,7 @@
 
 class Observer {
 public:
-	virtual void Update(Message m) = 0;
+	virtual void Update(Message* m) = 0;
 };
 
 #endif

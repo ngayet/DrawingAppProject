@@ -25,27 +25,27 @@ Controller::Controller() {
 
 }
 
-void Controller::Update(Message msg) {
+void Controller::Update(Message* msg) {
 
-	switch (msg.m_msgType) {
+	switch (msg->m_msgType) {
 	case TypesMessage::CONTROL_PANEL:
-		if (msg.m_id != "\n") {
-			m_id = msg.m_id;
+		if (msg->m_id != "\n") {
+			m_id = msg->m_id;
 		}
 
-		if (msg.m_fill != "") {
-			m_fill = msg.m_fill;
+		if (msg->m_fill != "") {
+			m_fill = msg->m_fill;
 		}
 
-		if (msg.m_stroke != "") {
-			m_stroke = msg.m_stroke;
+		if (msg->m_stroke != "") {
+			m_stroke = msg->m_stroke;
 		}
 
-		if (msg.m_strokeWidth != 0) {
-			m_strokeWidth = msg.m_strokeWidth;
+		if (msg->m_strokeWidth != 0) {
+			m_strokeWidth = msg->m_strokeWidth;
 		}
 
-		if (msg.m_lock) {
+		if (msg->m_lock) {
 			m_lock = true;
 		}
 		else {
@@ -53,7 +53,7 @@ void Controller::Update(Message msg) {
 		}
 
 		if (m_type != DrawingType::EMPTY) {
-			m_type = msg.m_type;
+			m_type = msg->m_type;
 		}
 
 		break;
@@ -61,6 +61,7 @@ void Controller::Update(Message msg) {
 	case TypesMessage::MYFRAME_ON_CLOSE:
 		delete m_controlPanel;
 		delete m_drawingPanel;
+		delete this;
 		break;
 
 	case TypesMessage::MYFRAME_ON_SIZE:

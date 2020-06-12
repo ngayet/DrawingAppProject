@@ -27,7 +27,7 @@ private:
 
 public:
 	Controller();
-	virtual void Update(Message msg);
+	void Update(Message* msg);
 	MyFrame* GetFrame() { return m_frame; }
 };
 

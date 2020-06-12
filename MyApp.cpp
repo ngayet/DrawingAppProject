@@ -6,8 +6,6 @@
 bool MyApp::OnInit()
 //------------------------------------------------------------------------
 {
-	Controller c = Controller();
-	
-	SetTopWindow(c.GetFrame());
+	SetTopWindow((new Controller())->GetFrame());
 	return true;
 }
