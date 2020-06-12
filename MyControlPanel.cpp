@@ -46,9 +46,7 @@ MyControlPanel::MyControlPanel(wxWindow* parent) : wxPanel(parent)
 
 	//CheckBox Lock
 	y += WIDGET_Y_STEP;
-	new wxStaticText(this, wxID_ANY, wxT("Lock"), wxPoint(10, y));
-	y += 15;
-	m_checkBoxLock = new wxCheckBox(this, ID_CHECKBOX_LOCK, "Show (x,y)", wxPoint(10, y), wxSize(100, 20));
+	m_checkBoxLock = new wxCheckBox(this, ID_CHECKBOX_LOCK, "Lock", wxPoint(10, y), wxSize(100, 20));
 	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBoxLock, this, ID_CHECKBOX_LOCK);
 }
 
