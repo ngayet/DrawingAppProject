@@ -7,6 +7,25 @@ Element::Element()
 	m_stroke = "";
 	m_strokeWidth = "";
 	m_lock = false;
+	m_x1 = 0;
+	m_y1 = 0;
+	m_x2 = 0;
+	m_y2 = 0;
+	m_type = EMPTY;
+}
+
+Element::Element(DrawingType type)
+{
+	m_id = "";
+	m_fill = "";
+	m_stroke = "";
+	m_strokeWidth = "";
+	m_lock = false;
+	m_x1 = 0;
+	m_y1 = 0;
+	m_x2 = 0;
+	m_y2 = 0;
+	m_type = type;
 }
 
 Element::~Element()
