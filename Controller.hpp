@@ -1,5 +1,6 @@
 #include "main.hpp"
 #include "string"
+#include "Element.hpp"
 
 #include "Message.hpp"
 
@@ -9,8 +10,11 @@ private:
 	std::string m_id;
 	std::string m_fill;
 	std::string m_stroke;
-	std::string m_strokeWidht;
+	int m_strokeWidth;
 	bool m_lock;
+	int m_x;
+	int m_y;
+	DrawingType m_type;
 
 public:
 	Controller();

@@ -10,7 +10,7 @@ public:
 	std::string m_id;
 	std::string m_fill;
 	std::string m_stroke;
-	std::string m_strokeWidht;
+	int m_strokeWidth;
 	bool m_lock;
 	int m_x;
 	int m_y;
@@ -22,7 +22,7 @@ Message::Message() {
 	m_id = "\n";
 	m_fill = "";
 	m_stroke = "";
-	m_strokeWidht = "";
+	m_strokeWidth = 0;
 	m_lock = false;
 	m_x = 0;
 	m_y = 0;
