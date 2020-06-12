@@ -12,14 +12,16 @@ Controller::Controller() {
 	m_y = 0;
 	m_type = DrawingType::EMPTY;
 
-	MyFrame* frame = new MyFrame(wxT(APP_NAME), wxDefaultPosition, wxSize(APPLICATION_WIDTH, APPLICATION_HEIGHT));
+	m_frame = new MyFrame(wxT(APP_NAME), wxDefaultPosition, wxSize(APPLICATION_WIDTH, APPLICATION_HEIGHT));
+	m_frame->AddObserver(this);
 
-	m_controlPanel = new MyControlPanel(frame);
-	m_drawingPanel = new MyDrawingPanel(frame);
+	m_controlPanel = new MyControlPanel(m_frame);
 	m_controlPanel->AddObserver(this);
+	
+	m_drawingPanel = new MyDrawingPanel(m_frame);
 	m_drawingPanel->AddObserver(this);
 
-	frame->Show(true);
+	m_frame->Show(true);
 
 }
 
@@ -55,6 +57,19 @@ void Controller::Update(Message msg) {
 		}
 
 		break;
+
+	case TypesMessage::MYFRAME_ON_CLOSE:
+		delete m_controlPanel;
+		delete m_drawingPanel;
+		break;
+
+	case TypesMessage::MYFRAME_ON_SIZE:
+		int w, h;
+		m_frame->GetSize(&w, &h);
+		m_controlPanel->SetSize(wxRect(wxPoint(0, 0), wxPoint(WIDGET_PANEL_WIDTH, h)));
+		m_drawingPanel->SetSize(wxRect(wxPoint(WIDGET_PANEL_WIDTH, 0), wxPoint(w, h)));
+		break;
+
 	default:
 		break;
 	}

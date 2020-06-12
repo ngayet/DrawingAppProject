@@ -1,8 +1,4 @@
 #include "MyFrame.hpp"
-#include "Controller.hpp"
-
-
-
 
 //************************************************************************
 //************************************************************************
@@ -53,8 +49,10 @@ void MyFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 void MyFrame::OnClose(wxCloseEvent& event)
 //------------------------------------------------------------------------
 {
-	//delete m_controlPanel;
-	//delete m_drawingPanel;
+
+	Message msg = Message();
+	msg.m_msgType = TypesMessage::MYFRAME_ON_CLOSE;
+	notifyObservers(msg);
 	event.Skip();
 }
 
@@ -89,8 +87,9 @@ void MyFrame::OnSize(wxSizeEvent& event)
 //------------------------------------------------------------------------
 // Called when you resize the frame
 {
-	int w, h;
-	GetSize(&w, &h);
-	//m_controlPanel->SetSize(wxRect(wxPoint(0, 0), wxPoint(WIDGET_PANEL_WIDTH, h)));
-	//m_drawingPanel->SetSize(wxRect(wxPoint(WIDGET_PANEL_WIDTH, 0), wxPoint(w, h)));
+	if (ObserveurIsSet()) {
+		Message msg = Message();
+		msg.m_msgType = TypesMessage::MYFRAME_ON_SIZE;
+		//notifyObservers(msg);
+	}
 }

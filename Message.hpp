@@ -4,7 +4,9 @@
 
 enum TypesMessage {
 	EMPTY_MESSAGE,
-	CONTROL_PANEL
+	CONTROL_PANEL,
+	MYFRAME_ON_CLOSE,
+	MYFRAME_ON_SIZE
 };
 
 class Message {

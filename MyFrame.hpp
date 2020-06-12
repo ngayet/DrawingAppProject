@@ -2,12 +2,11 @@
 #define __MyFrame_h__
 
 #include "wx/wxprec.h"
-#include "MyDrawingPanel.hpp"
-#include "MyControlPanel.hpp"
 #include "Constants.hpp"
+#include "Subject.hpp"
 
 //------------------------------------------------------------------------
-class MyFrame : public wxFrame
+class MyFrame : public wxFrame, public Subject
 	//------------------------------------------------------------------------
 {
 public:

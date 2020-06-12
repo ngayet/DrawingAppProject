@@ -22,12 +22,12 @@ private:
 	DrawingType m_type;
 	MyControlPanel* m_controlPanel;
 	MyDrawingPanel* m_drawingPanel;
-	MyFrame* m_Frame;
+	MyFrame* m_frame;
 
 public:
 	Controller();
 	virtual void Update(Message msg);
-	MyFrame* GetFrame() { return m_Frame; }
+	MyFrame* GetFrame() { return m_frame; }
 };
 
 #endif
