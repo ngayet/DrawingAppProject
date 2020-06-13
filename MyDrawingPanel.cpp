@@ -12,6 +12,7 @@ MyDrawingPanel::MyDrawingPanel(wxWindow* parent) : wxPanel(parent)
 	SetBackgroundColour(wxColour(0xFF, 0xFF, 0xFF));
 	Bind(wxEVT_MOTION, &MyDrawingPanel::OnMouseMove, this);
 	Bind(wxEVT_LEFT_DOWN, &MyDrawingPanel::OnMouseLeftDown, this);
+	Bind(wxEVT_RIGHT_DOWN, &MyDrawingPanel::OnMouseRightDown, this);
 	Bind(wxEVT_PAINT, &MyDrawingPanel::OnPaint, this);
 	m_onePoint.x = (w - WIDGET_PANEL_WIDTH) / 2;
 	m_onePoint.y = h / 2;
@@ -43,6 +44,17 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent& event)
 	notifyObservers(&msg);
 }
 
+void MyDrawingPanel::OnMouseRightDown(wxMouseEvent& event)
+//------------------------------------------------------------------------
+// called when the mouse left button is pressed
+{
+	Message msg = Message();
+
+	msg.m_msgType = TypesMessage::DRAWING_MOUSE_RIGHT_DOWN;
+	msg.m_x = event.m_x;
+	msg.m_y = event.m_y;
+	notifyObservers(&msg);
+}
 //------------------------------------------------------------------------
 void MyDrawingPanel::OnPaint(wxPaintEvent& event)
 //------------------------------------------------------------------------

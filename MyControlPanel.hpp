@@ -10,7 +10,7 @@ class MyControlPanel : public wxPanel, public Subject
 {
 public:
 	MyControlPanel(wxWindow* parent);
-	int GetSliderValue() { return m_sliderWidthStroke->GetValue(); };
+	wxTextCtrl* GetId() { return m_TextId; }
 
 private:
 	void OnTextCtrlId(wxCommandEvent& event);

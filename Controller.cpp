@@ -1,6 +1,6 @@
 #include "Controller.hpp"
 
-
+#define ACCURACY 15 //for the selection of Elements, in pixel
 
 Controller::Controller() {
 	m_id = "";
@@ -123,6 +123,19 @@ void Controller::Update(Message* msg) {
 		m_drawingPanel->SetSize(wxRect(wxPoint(WIDGET_PANEL_WIDTH, 0), wxPoint(w, h)));
 		break;
 
+	case TypesMessage::DRAWING_MOUSE_RIGHT_DOWN:
+		for (Element* element : m_elements) {
+			if (element->GetType() == DrawingType::LINE) {
+				if (isInTheLine(element->GetX1(), element->GetY1(), element->GetX2(), element->GetY2(), msg->m_x, msg->m_y))
+				{
+					m_id = element->GetId();
+					m_controlPanel->GetId()->SetLabel(m_id);
+					m_controlPanel->Refresh();
+				}
+			}
+		}
+		break;
+
 	default:
 		break;
 	}
@@ -131,25 +144,25 @@ void Controller::Update(Message* msg) {
 }
 
 bool Controller::isInTheLine(int x1, int y1, int x2, int y2, int p_x, int p_y) {
-	if (x1 > x2) {
-		int temp = x1;
-		x1 = x2;
-		x2 = temp;
-		temp = y1;
-		y1 = y2;
-		y2 = temp;
+
+	if (x1 <= x2) {
+		if (x1-ACCURACY > p_x || x2+ ACCURACY < p_x) return false;
+	}
+	else {
+		if (x2 - ACCURACY > p_x || x1 + ACCURACY < p_x) return false;
 	}
 
-	if (p_x >= x1 && p_x <= x2) {
+	float a, b;
+	int y;
 
-		float a = (y2 - y1) / (x2 - x1);
-		float b = y1 - a * x1;
-
-		if (p_y == (a * p_x + b)) {
-			return true;
-		}
-		else {
-			return false;
-		}
+	if (x1 == x2) {
+		a = (float)(y2 - y1);
 	}
+	else {
+		a = (float)(y2 - y1) / (float)(x2 - x1);
+	}
+	b = y1 - a * x1;
+	y = a * p_x + b;
+
+	return p_y > y - ACCURACY && p_y < y + ACCURACY;
 }

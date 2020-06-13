@@ -16,6 +16,7 @@ public:
 private:
 	void OnMouseMove(wxMouseEvent& event);
 	void OnMouseLeftDown(wxMouseEvent& event);
+	void OnMouseRightDown(wxMouseEvent& event);
 	void OnPaint(wxPaintEvent& event);
 	wxPoint m_mousePoint;
 	wxPoint m_onePoint;
