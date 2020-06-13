@@ -13,6 +13,7 @@
 class Controller : public Observer
 {
 private:
+	// Control informations
 	std::string m_id;
 	std::string m_fill;
 	std::string m_stroke;
@@ -21,9 +22,17 @@ private:
 	int m_x;
 	int m_y;
 	DrawingType m_type;
+
+	Element m_currentElement;
+	std::vector<Element*> m_elements;
+
+	// Panels
 	MyControlPanel* m_controlPanel;
 	MyDrawingPanel* m_drawingPanel;
 	MyFrame* m_frame;
+
+	bool isInTheLine(int x1, int y1, int x2, int y2, int p_x, int p_y);
+
 
 public:
 	Controller();

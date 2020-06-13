@@ -16,9 +16,6 @@ MyDrawingPanel::MyDrawingPanel(wxWindow* parent) : wxPanel(parent)
 	m_onePoint.x = (w - WIDGET_PANEL_WIDTH) / 2;
 	m_onePoint.y = h / 2;
 	m_mousePoint = m_onePoint;
-	m_isDrawing = false;
-	m_currentElement = NULL;
-	m_elements = NULL;
 }
 
 //------------------------------------------------------------------------
@@ -26,12 +23,11 @@ void MyDrawingPanel::OnMouseMove(wxMouseEvent& event)
 //------------------------------------------------------------------------
 // called when the mouse is moved
 {
-	if (m_isDrawing) {
-		m_mousePoint.x = event.m_x;
-		m_mousePoint.y = event.m_y;
-
-	}
-	Refresh();	// send an event that calls the OnPaint method
+	Message msg = Message();
+	msg.m_msgType = TypesMessage::DRAWING_MOUSE_MOVE;
+	msg.m_x = event.m_x;
+	msg.m_y = event.m_y;
+	notifyObservers(&msg);
 }
 
 //------------------------------------------------------------------------
@@ -39,9 +35,12 @@ void MyDrawingPanel::OnMouseLeftDown(wxMouseEvent& event)
 //------------------------------------------------------------------------
 // called when the mouse left button is pressed
 {
-	m_onePoint.x = event.m_x;
-	m_onePoint.y = event.m_y;
-	Refresh(); // send an event that calls the OnPaint method
+	Message msg = Message();
+
+	msg.m_msgType = TypesMessage::DRAWING_MOUSE_LEFT_DOWN;
+	msg.m_x = event.m_x;
+	msg.m_y = event.m_y;
+	notifyObservers(&msg);
 }
 
 //------------------------------------------------------------------------
@@ -51,30 +50,20 @@ void MyDrawingPanel::OnPaint(wxPaintEvent& event)
 // when the panel is resized
 // You have to call OnPaint with Refresh() when you need to update the panel content
 {
-	// read the control values
-	//MyFrame* frame = (MyFrame*)GetParent();
-	// then paint
-	wxPaintDC dc(this);
+	Message msg = Message();
+	msg.m_msgType = TypesMessage::DRAWING_ON_PAINT;
+	notifyObservers(&msg);
 
-	dc.DrawLine(m_mousePoint, m_onePoint);
+	/*dc.DrawLine(m_mousePoint, m_onePoint);
 	if (m_elements) {
 		for (Element* element : *m_elements) {
 			DrawingThis(&dc, element);
 		}
-	}
+	}*/
 
-	if (m_isDrawing)
-	{
-		DrawingThis(&dc, m_currentElement);
-	}
-}
 
-void MyDrawingPanel::DrawingThis(wxPaintDC* dc, Element* element) {
-
-	if (element->GetType() == DrawingType::LINE)
-		dc->DrawLine(wxPoint(element->GetX1(), element->GetY1()), wxPoint(element->GetX2(), element->GetY2()));
-	else if (element->GetType() == DrawingType::CIRCLE)
-		dc->DrawCircle(wxPoint(element->GetX2(), element->GetY2()), sqrt(pow(element->GetX2() - element->GetX1(), 2) + pow(element->GetY2() - element->GetY1(), 2)));
+		
+	
 }
 
 //------------------------------------------------------------------------

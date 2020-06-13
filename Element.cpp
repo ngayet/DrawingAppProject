@@ -5,7 +5,7 @@ Element::Element()
 	m_id = "";
 	m_fill = "";
 	m_stroke = "";
-	m_strokeWidth = "";
+	m_strokeWidth = 0;
 	m_lock = false;
 	m_x1 = 0;
 	m_y1 = 0;
@@ -19,7 +19,7 @@ Element::Element(DrawingType type)
 	m_id = "";
 	m_fill = "";
 	m_stroke = "";
-	m_strokeWidth = "";
+	m_strokeWidth = 0;
 	m_lock = false;
 	m_x1 = 0;
 	m_y1 = 0;
@@ -41,6 +41,11 @@ Element::Element(const Element& e)
 	m_stroke = e.m_stroke;
 	m_strokeWidth = e.m_strokeWidth;
 	m_lock = e.m_lock;
+	m_x1 = e.m_x1;
+	m_y1 = e.m_y1;
+	m_x2 = e.m_x2;
+	m_y2 = e.m_y2;
+	m_type = e.m_type;
 }
 
 Element& Element::operator=(const Element& e)
@@ -51,6 +56,10 @@ Element& Element::operator=(const Element& e)
 	m_stroke = e.m_stroke;
 	m_strokeWidth = e.m_strokeWidth;
 	m_lock = e.m_lock;
-
+	m_x1 = e.m_x1;
+	m_y1 = e.m_y1;
+	m_x2 = e.m_x2;
+	m_y2 = e.m_y2;
+	m_type = e.m_type;
 	return *this;
 }

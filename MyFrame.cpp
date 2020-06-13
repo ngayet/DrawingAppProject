@@ -32,7 +32,6 @@ MyFrame::MyFrame(const wxString& title, const wxPoint& pos, const wxSize& size)
 
 	SetMenuBar(menuBar);
 
-
 	CreateStatusBar();
 	SetStatusText(wxT("click in the right panel and tune the controls of the left panel. Visit the File menu!"));
 	Centre(); // Guess what it does ;-)
@@ -88,9 +87,9 @@ void MyFrame::OnSize(wxSizeEvent& event)
 //------------------------------------------------------------------------
 // Called when you resize the frame
 {
-	if (ObserveurIsSet()) {
+	//if (ObserveurIsSet()) {
 		Message msg = Message();
 		msg.m_msgType = TypesMessage::MYFRAME_ON_SIZE;
-		//notifyObservers(msg);
-	}
+		notifyObservers(&msg);
+	//}
 }
