@@ -13,6 +13,7 @@ public:
 	int GetSliderValue() { return m_sliderWidthStroke->GetValue(); };
 
 private:
+	void OnTextCtrlId(wxCommandEvent& event);
 	void OnButtonLine(wxCommandEvent& event);
 	void OnButtonCircle(wxCommandEvent& event);
 	void OnColorPickerFillChanged(wxColourPickerEvent& event);
@@ -20,6 +21,7 @@ private:
 	void OnSliderStroke(wxScrollEvent& event);
 	void OnCheckBoxLock(wxCommandEvent& event);
 
+	wxTextCtrl* m_TextId;
 	wxButton* m_ButtonLine;
 	wxButton* m_ButtonCircle;
 	wxColourPickerCtrl* m_colorFill;

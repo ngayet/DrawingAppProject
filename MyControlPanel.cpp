@@ -13,8 +13,15 @@ MyControlPanel::MyControlPanel(wxWindow* parent) : wxPanel(parent)
 	SetSize(wxRect(wxPoint(0, 0), wxPoint(WIDGET_PANEL_WIDTH, h)));
 	SetBackgroundColour(*wxLIGHT_GREY);
 
-	//Button Line
+	//Text Id
 	y = WIDGET_Y0;
+	new wxStaticText(this, wxID_ANY, wxT("Item Id"), wxPoint(10, y));
+	y += 15;
+	m_TextId = new wxTextCtrl(this, ID_TEXTBOX, wxT(""), wxPoint(10, y));
+	Bind(wxEVT_TEXT, &MyControlPanel::OnTextCtrlId, this, ID_TEXTBOX);
+
+	//Button Line
+	y += WIDGET_Y_STEP;
 	m_ButtonLine = new wxButton(this, ID_BUTTON_LINE, wxT("Line"), wxPoint(10, y));
 	Bind(wxEVT_BUTTON, &MyControlPanel::OnButtonLine, this, ID_BUTTON_LINE);
 
@@ -48,6 +55,19 @@ MyControlPanel::MyControlPanel(wxWindow* parent) : wxPanel(parent)
 	y += WIDGET_Y_STEP;
 	m_checkBoxLock = new wxCheckBox(this, ID_CHECKBOX_LOCK, "Lock", wxPoint(10, y), wxSize(100, 20));
 	Bind(wxEVT_CHECKBOX, &MyControlPanel::OnCheckBoxLock, this, ID_CHECKBOX_LOCK);
+}
+
+//------------------------------------------------------------------------
+void MyControlPanel::OnTextCtrlId(wxCommandEvent& event)
+//------------------------------------------------------------------------
+{
+	Message msg = Message();
+
+	msg.m_msgType = TypesMessage::CONTROL_PANEL;
+	msg.m_id = m_TextId->GetValue();
+	notifyObservers(&msg);
+
+	//wxMessageBox(wxT("You just pressed the button!"));
 }
 
 //------------------------------------------------------------------------
