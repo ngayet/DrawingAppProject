@@ -1,5 +1,10 @@
 # Drawing application project in C++ using wxWidgets
 
+After project analysis:
+We spent the most time by organise the original code in MVC and Obsever pattern. Later, I discussed with expert of WxWidget library on C++ and he told me that WxWidgets was not designed for MVC structure... However, the most of the spirit behind MVC / Observer pattern is implemented with success. The usefulness... is not proved at all :).
+
+# Initial idea
+
 ## Goals
 1. Drawing
    - line
